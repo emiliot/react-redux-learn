@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
+import {FormattedNumber} from 'react-intl';
 
 class ManageCoursePage extends React.Component {
   constructor(props, context){
@@ -51,13 +52,16 @@ class ManageCoursePage extends React.Component {
 
   render(){
     return (
-      <CourseForm
-        allAuthors = {this.props.authors}
-        onChange = {this.updateCourseState}
-        onSave={this.saveCourse}
-        course={this.state.course}
-        errors={this.state.errors}
-        saving={this.state.saving}/>
+      <div>
+        <FormattedNumber value={100000} style='currency' currency='USD' />
+        <CourseForm
+          allAuthors = {this.props.authors}
+          onChange = {this.updateCourseState}
+          onSave={this.saveCourse}
+          course={this.state.course}
+          errors={this.state.errors}
+          saving={this.state.saving}/>
+      </div>
     );
   }
 }
